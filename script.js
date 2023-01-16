@@ -21,15 +21,23 @@ function removeGrid() {
 }
 
 function createGrid(selected_square_count) {
-    let grid_block_size = (960.0 / selected_square_count) - 2;
+    let row = null;
+    let grid_block = null;
     for (let i = 0; i < selected_square_count; i++) {
-        let row = document.createElement('div');
+        row = document.createElement('div');
         for (let j = 0; j < selected_square_count; j++) {
-            let grid_block = document.createElement('div');
+            grid_block = document.createElement('div');
             grid_block.classList.add('grid-block');
             row.appendChild(grid_block);
+            changeColor(grid_block);
         }
         row.classList.add('row');
         grid_container.appendChild(row);
     }
+}
+
+function changeColor(grid_block) {
+    grid_block.addEventListener('mouseover', () => {            
+    grid_block.style.backgroundColor = '#414141';
+    })
 }
